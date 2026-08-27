@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students</title>
+</head>
+
+<body>
+
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        |
+        <a href="{% url 'student_list' %}">Students</a>
+        |
+        <a href="{% url 'about' %}">About</a>
+    </nav>
+
+    <h1>{{ school_name }}</h1>
+
+    <h2>Student List</h2>
+
+    {% if students %}
+
+        <ul>
+
+        {% for student in students %}
+
+            <li>
+                <strong>{{ student.name }}</strong>
+                <br>
+
+                Age: {{ student.age }}
+                <br>
+
+                Course: {{ student.course }}
+                <br>
+
+                Score: {{ student.score }}
+
+                {% if student.score >= 50 %}
+                    <p>Status: Passed</p>
+                {% else %}
+                    <p>Status: Failed</p>
+                {% endif %}
+
+            </li>
+
+            <hr>
+
+        {% endfor %}
+
+        </ul>
+
+    {% else %}
+
+        <p>No students available.</p>
+
+    {% endif %}
+
+</body>
+</html>
